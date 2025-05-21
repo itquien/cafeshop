@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Home - Coffee World</title>
+  <style>
+    body {
+font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;      background-color: #f6f5f4;
+      margin: 0;
+      padding: 0;
+      color: #2e2e2e;
+    }
+   
+  
+    nav {
+      background: #ffffff;
+      border-bottom: 1px solid #dedcd8;
+    }
+    nav ul {
+      display: flex;
+      justify-content: center;
+      padding: 0.5rem 0;
+      list-style: none;
+      margin: 0;
+    }
+    nav ul li {
+      margin: 0 1.5rem;
+    }
+    nav ul li a {
+      color: #5c5a58;
+      text-decoration: none;
+      font-weight: 500;
+      padding: 0.5rem;
+      border-radius: 6px;
+      transition: background 0.2s;
+    }
+    nav ul li a:hover,
+    nav ul li a.active {
+      background: #f1edea;
+    }
+    main {
+      max-width: 900px;
+      margin: 3rem auto;
+      padding: 2rem;
+      background: #ffffff;
+      border-radius: 12px;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.05);
+      line-height: 1.75;
+      font-size: 1.1rem;
+      transition: transform 0.2s ease-out;
+      opacity: 0;
+      animation: fadeIn 1.5s forwards 0.5s;
+    }
+    footer {
+      text-align: center;
+      padding: 1rem;
+      font-size: 0.85rem;
+      color: #9e9c99;
+      background-color: #f1f0ee;
+      margin-top: 4rem;
+    }
+    @keyframes fadeIn {
+      to { opacity: 1; }
+    }
+  </style>
+</head>
+<body>
+  <header>MASHAEL ALSHAMMARI</header>
+  <nav>
+    <ul>
+      <li><a href="index.html" class="active">Home</a></li>
+      
+    
+    </ul>
+  </nav>
+  <main id="main-content">
+    <h1>Welcome to my cafe website </h1>
+    <p>Welcome to the rich world of coffee — a story that begins with humble beans and grows into a global culture cherished by millions.</p>
+    <p>
+      <strong> The Origin of Coffee Beans</strong><br>
+      Coffee beans aren’t actually beans — they’re the seeds of the coffee cherry, a fruit that grows on coffee plants mostly in tropical regions near the equator.
+      The most popular varieties are Arabica and Robusta, each with unique flavors and growing conditions.
+      Arabica beans are prized for their delicate, nuanced flavors, while Robusta beans offer a stronger, more bitter taste and higher caffeine content.
+    </p>
+    <p>
+      Legend has it that coffee was discovered in Ethiopia by a goat herder named Kaldi,
+      who noticed his goats becoming energized after eating red cherries from a certain plant.
+      From there, coffee traveled through the Arabian Peninsula and spread worldwide, becoming a beloved beverage.
+    </p>
+    <p>
+      <strong> From Bean to Cup</strong><br>
+      The journey from green coffee bean to your morning cup involves several steps:
+      harvesting, processing, roasting, grinding, and brewing.
+      Each step impacts the flavor and aroma, creating an endless variety of coffee experiences.
+      Roasting is an art form — light roasts preserve fruity, floral notes,
+      while dark roasts bring out rich, smoky flavors.
+    </p>
+    <p>
+      <strong> The Culture of Coffee</strong><br>
+      Coffee culture is about more than just drinking coffee — it’s about community, creativity, and ritual.
+      Around the world, coffeehouses serve as social hubs, places to connect, work, or simply enjoy a quiet moment.
+      From the traditional Italian espresso bar to the Japanese kissaten, coffee culture adapts to local customs and tastes.
+    </p>
+    <p>
+      In recent years, specialty coffee shops have emphasized sustainability, direct trade, and artisanal brewing methods,
+      turning coffee into a craft and an experience.
+    </p>
+    <p>
+      <strong>Closing</strong><br>
+      Whether you savor a simple drip brew or an elaborate latte art creation, coffee connects us to nature, history, and each other.
+      So the next time you sip your cup, remember the incredible journey those tiny beans have traveled — from plant to culture, and finally, to you.
+    </p>
+    <p>Explore our popular selections, learn about our journey, or get in touch with us.</p>
+  </main>
+  <footer>© 2025  All rights reserved.</footer>
+
+  <script>
+    const mainContent = document.getElementById('main-content');
+    mainContent.addEventListener('mousemove', (e) => {
+      const rect = mainContent.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      const centerX = rect.width / 2;
+      const centerY = rect.height / 2;
+      const rotateX = ((y - centerY) / centerY) * 10;
+      const rotateY = ((x - centerX) / centerX) * 10;
+      mainContent.style.animation = 'none';
+      mainContent.style.transform = `rotateX(${-rotateX}deg) rotateY(${rotateY}deg) scale(1.03)`;
+    });
+    mainContent.addEventListener('mouseleave', () => {
+      mainContent.style.animation = 'fadeIn 1.5s forwards';
+      mainContent.style.transform = 'rotateX(0) rotateY(0) scale(1)';
+    });
+  </script>
+</body>
+</html>

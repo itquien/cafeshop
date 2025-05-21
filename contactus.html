@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Contact Us - Coffee World</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #fcfcfc;
+      margin: 0; padding: 0;
+      color: #555;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+    .contact-container {
+      background: #fff;
+      padding: 2rem 3rem;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      max-width: 400px;
+      width: 100%;
+    }
+    h1 {
+      text-align: center;
+      margin-bottom: 1.5rem;
+      color: #8f8a85;
+    }
+    form {
+      display: flex;
+      flex-direction: column;
+    }
+    label {
+      margin-bottom: 0.3rem;
+      font-weight: 600;
+    }
+    input, textarea {
+      padding: 0.6rem;
+      margin-bottom: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 1rem;
+      font-family: inherit;
+      resize: vertical;
+    }
+    button {
+      background-color: #aca8a4;
+      color: white;
+      border: none;
+      padding: 0.8rem;
+      font-size: 1.1rem;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    button:hover {
+      background-color: #8c6742;
+    }
+    .status-message {
+      text-align: center;
+      margin-top: 1rem;
+      font-weight: 600;
+    }
+  </style>
+
+  <script src="https://cdn.emailjs.com/sdk/3.2/email.min.js"></script>
+  <script>
+    (function(){
+      emailjs.init('YOUR_USER_ID'); // <-- Replace with your EmailJS User ID
+    })();
+  </script>
+</head>
+<body>
+
+  <div class="contact-container">
+    <h1>Contact Us</h1>
+    <form id="contactForm">
+      <label for="from_name">Your Name</label>
+      <input type="text" id="from_name" name="from_name" required placeholder="Enter your name" />
+
+      <label for="from_email">Your Email</label>
+      <input type="email" id="from_email" name="from_email" required placeholder="Enter your email" />
+
+      <label for="message">Message</label>
+      <textarea id="message" name="message" rows="5" required placeholder="Write your message here"></textarea>
+
+      <button type="submit">Send Message</button>
+    </form>
+    <div class="status-message" id="status"></div>
+  </div>
+
+  <script>
+    const form = document.getElementById('contactForm');
+    const statusDiv = document.getElementById('status');
+
+    form.addEventListener('submit', function(event) {
+      event.preventDefault();
+      statusDiv.textContent = "Sending...";
+
+      emailjs.sendForm('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', this)
+        .then(() => {
+          statusDiv.style.color = 'green';
+          statusDiv.textContent = "Message sent! Thank you.";
+          form.reset();
+        }, (error) => {
+          statusDiv.style.color = 'red';
+          statusDiv.textContent = "Oops! Something went wrong. Please try again.";
+          console.error('EmailJS error:', error);
+        });
+    });
+  </script>
+
+</body>
+</html>
