@@ -1202,4 +1202,53 @@ footer {
 .footer-social a:hover {
     color: #0077b6; /* Optional: Add hover effect to change the color of the icon */
 }
+
+/* Default desktop/tablet styles here */
+
+/* ----------- Tablet & mobile (≤ 768px) ----------- */
+@media screen and (max-width: 768px) {
+  body {
+    font-size: 14px;
+    padding: 0;
+    margin: 0;
+  }
+
+  header, nav, main, footer {
+    width: 100%;
+    padding: 10px;
+  }
+
+  .container {
+    display: flex;
+    flex-direction: column; /* stack instead of side-by-side */
+    gap: 15px;
+  }
+
+  img {
+    max-width: 100%;
+    height: auto; /* keeps proportions */
+  }
+}
+
+/* ----------- Small mobile (≤ 480px) ----------- */
+@media screen and (max-width: 480px) {
+  body {
+    font-size: 12px;
+  }
+
+  h1 {
+    font-size: 1.5rem;
+  }
+
+  nav ul {
+    flex-direction: column; /* menu becomes vertical */
+    gap: 8px;
+  }
+
+  .button {
+    font-size: 0.9rem;
+    padding: 8px 12px;
+  }
+}
+
  
