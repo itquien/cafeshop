@@ -463,40 +463,38 @@ document.querySelector('search-bar').classlist.remove('search-bar-active');
 </script>
 
 <script>
+  // When DOM is ready
   document.addEventListener('DOMContentLoaded', () => {
-    const img = document.querySelector('.main-content-img img');
-    const text = document.querySelector('.main-content-text');
+    // Select all product image containers and text containers
+    const products = document.querySelectorAll('.product-box');
 
-    // Fade in text smoothly on page load
-    text.style.opacity = 0;
-    text.style.transition = 'opacity 1.2s ease, transform 1.2s ease';
-    text.style.transform = 'translateY(20px)';
+    products.forEach(product => {
+      const img = product.querySelector('.product-box-img img');
+      const text = product.querySelector('.product-box-text');
 
-    setTimeout(() => {
-      text.style.opacity = 1;
-      text.style.transform = 'translateY(0)';
-    }, 100);
+      let start = null;
 
-    // Float animation variables
-    let direction = 1; // 1 = up, -1 = down
-    let position = 0; // current translateY position in px
-    const maxMove = 15; // max pixels to move up or down
-    const speed = 0.3; // speed of movement in px per frame
+      function floatAnimation(timestamp) {
+        if (!start) start = timestamp;
+        const elapsed = timestamp - start;
 
-    function floatAnimation() {
-      position += direction * speed;
+        // Calculate float offset with sine wave for smooth up/down movement
+        const offset = Math.sin(elapsed / 1000) * 5; // 5px max movement
 
-      if (position > maxMove) {
-        direction = -1;
-      } else if (position < 0) {
-        direction = 1;
+        if (img) {
+          img.style.transform = `translateY(${offset}px)`;
+          img.style.transition = 'transform 0.1s ease-out';
+        }
+        if (text) {
+          text.style.transform = `translateY(${offset / 2}px)`; // smaller movement for text
+          text.style.transition = 'transform 0.1s ease-out';
+        }
+
+        requestAnimationFrame(floatAnimation);
       }
 
-      img.style.transform = `translateY(${-position}px)`; // move image up and down
       requestAnimationFrame(floatAnimation);
-    }
-
-    floatAnimation(); // start the animation loop
+    });
   });
 </script>
 
