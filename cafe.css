@@ -1251,4 +1251,37 @@ footer {
   }
 }
 
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+
+.container {
+  display: flex;
+  flex-wrap: wrap; /* allows wrapping when space is small */
+  gap: 1rem;
+  max-width: 1200px; /* optional limit */
+  margin: auto;
+  padding: 1rem;
+}
+
+section {
+  flex: 1 1 300px; /* grow, shrink, min-width */
+  box-sizing: border-box;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Tablet & below */
+@media screen and (max-width: 768px) {
+  .container {
+    flex-direction: column;
+  }
+}
+
+
  
