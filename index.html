@@ -462,6 +462,43 @@ document.querySelector('search-bar').classlist.remove('search-bar-active');
     });
 </script>
 
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const img = document.querySelector('.main-content-img img');
+    const text = document.querySelector('.main-content-text');
+
+    // Fade in text smoothly on page load
+    text.style.opacity = 0;
+    text.style.transition = 'opacity 1.2s ease, transform 1.2s ease';
+    text.style.transform = 'translateY(20px)';
+
+    setTimeout(() => {
+      text.style.opacity = 1;
+      text.style.transform = 'translateY(0)';
+    }, 100);
+
+    // Float animation variables
+    let direction = 1; // 1 = up, -1 = down
+    let position = 0; // current translateY position in px
+    const maxMove = 15; // max pixels to move up or down
+    const speed = 0.3; // speed of movement in px per frame
+
+    function floatAnimation() {
+      position += direction * speed;
+
+      if (position > maxMove) {
+        direction = -1;
+      } else if (position < 0) {
+        direction = 1;
+      }
+
+      img.style.transform = `translateY(${-position}px)`; // move image up and down
+      requestAnimationFrame(floatAnimation);
+    }
+
+    floatAnimation(); // start the animation loop
+  });
+</script>
 
 
 
